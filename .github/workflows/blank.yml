@@ -1,0 +1,47 @@
+name: Build and Test Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          choco install arduino-cli -y
+          choco install mingw -y
+          echo "::add-path::C:\\tools\\mingw64\\bin"
+
+      - name: Setup Arduino CLI
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr
+
+      - name: Build Arduino Server
+        run: |
+          arduino-cli compile --fqbn arduino:avr:uno src/Server/Server.ino --output-dir ./build
+
+      - name: Build C++ Client
+        run: |
+          mkdir build
+          g++ -o build/client src\\Сlient\\Сlient\\Сlient.cpp
+
+      - name: Run Tests
+        run: |
+          echo "No automated tests defined yet"
+
+      - name: Save Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: build/
