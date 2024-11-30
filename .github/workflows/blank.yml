@@ -26,6 +26,13 @@ jobs:
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr
+		
+		- name: Recreate build directory
+		  run: |
+			 if exist build (
+				rmdir /s /q build
+			 )
+			 mkdir build	 
 
       - name: Build Arduino Server
         run: |
