@@ -40,7 +40,7 @@ jobs:
 
       - name: Build C++ Client
         run: |
-          g++ -o build/client src\\Сlient\\Сlient\\Сlient.cpp
+          g++ -o build/client src/Сlient/Сlient/Сlient.cpp
 
       - name: Run Tests
         run: |
