@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Install dependencies
         run: |
@@ -26,13 +26,13 @@ jobs:
         run: |
           arduino-cli core update-index
           arduino-cli core install arduino:avr
-		
-		- name: Recreate build directory
-		  run: |
-			 if exist build (
-				rmdir /s /q build
-			 )
-			 mkdir build	 
+
+      - name: Recreate build directory
+        run: |
+          if exist build (
+            rmdir /s /q build
+          )
+          mkdir build
 
       - name: Build Arduino Server
         run: |
@@ -40,7 +40,6 @@ jobs:
 
       - name: Build C++ Client
         run: |
-          mkdir build
           g++ -o build/client src\\Сlient\\Сlient\\Сlient.cpp
 
       - name: Run Tests
