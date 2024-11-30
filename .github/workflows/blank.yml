@@ -3,7 +3,7 @@ name: Build and Test Pipeline
 on:
   push:
     branches:
-      - develop
+      - task2
   pull_request:
     branches:
       - develop
