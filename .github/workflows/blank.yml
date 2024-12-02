@@ -42,12 +42,14 @@ jobs:
         run: |
           g++ -o build/client src/Client/Client/Client.cpp
 
-      - name: Run Tests
+      - name: Compile and Test Client
         run: |
-          echo "No automated tests defined yet"
+          mkdir -p build
+          g++ -o build/test test/test/test/test.cpp
+          build/test
 
       - name: Save Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: build/
