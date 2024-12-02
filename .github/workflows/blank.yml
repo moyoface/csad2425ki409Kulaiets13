@@ -44,9 +44,11 @@ jobs:
 
       - name: Compile and Test Client
         run: |
-          mkdir -p build
+          if (-Not (Test-Path -Path build)) {
+            New-Item -ItemType Directory -Path build
+          }
           g++ -o build/test test/test/test/test.cpp
-          build/test
+          ./build/test
 
       - name: Save Artifacts
         uses: actions/upload-artifact@v4
