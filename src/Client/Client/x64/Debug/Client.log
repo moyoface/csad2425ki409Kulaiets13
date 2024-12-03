@@ -1,3 +1,0 @@
-﻿  Client.cpp
-C:\moyoface KI\4 курс\АПКС\Лаб №2\Client\Client\Client.cpp(40,41): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-  Client.vcxproj -> C:\moyoface KI\4 курс\АПКС\Лаб №2\Client\x64\Debug\Client.exe
